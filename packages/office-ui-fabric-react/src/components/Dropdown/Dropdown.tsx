@@ -346,6 +346,7 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       onRenderList = this._onRenderList,
       responsiveMode,
       calloutProps,
+      panelProps,
       dropdownWidth
     } = this.props;
 
@@ -355,11 +356,12 @@ export class Dropdown extends BaseComponent<IDropdownInternalProps, IDropdownSta
       isSmall ?
         (
           <Panel
-            className={ css('ms-Dropdown-panel', styles.panel) }
+            className={ css('ms-Dropdown-panel', styles.panel, panelProps ? panelProps.className : undefined) }
             isOpen={ true }
             isLightDismiss={ true }
             onDismissed={ this._onDismiss }
             hasCloseButton={ false }
+            { ...panelProps }
           >
             { onRenderList(props, this._onRenderList) }
           </Panel>
